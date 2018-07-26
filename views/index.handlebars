@@ -1,1 +1,49 @@
-<h1>Hello World</h1>
+<h1>Burger Logger</h1>
+
+<h2>Eaten burgers</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if eaten}}
+      {{burgers eaten=true}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Not-Eaten Burgers</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless eaten}}
+      {{burgers eaten=false}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="burger">Burger:</label>
+    <input type="text" id="new-burger" name="burgers_name">
+  </div>
+
+  <button id="submit-btn" type="submit">Add burger</button>
+</form>
+
+<script>
+  $("#submit-btn").on("click", function() {
+    event.preventDefault();
+    newBurger = {
+      name: $("#new-burger").val().trim()
+    };
+  console.log(newBurger);
+
+    $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger
+      }).then( function(data) {
+      console.log(data);
+    })
+  })
+</script>

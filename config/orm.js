@@ -28,20 +28,20 @@ var orm = {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err, result) {
             if (err) {
-                throw err; // ???
+                throw err;
             }
             cb(result);
         });
     },
     create: function(table, cols, vals, cb) {
-        var queryString = "INSERT INTO " +table;
+        var queryString = `INSERT INTO burgers (burger_name) VALUES ('${vals}')`;
 
-        queryString += " (";
-        queryString += cols.toString();
-        queryString += ") ";
-        queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length);
-        queryString += ") ";
+        // queryString += " (";
+        // queryString += cols.toString();
+        // queryString += ") ";
+        // queryString += "VALUES (";
+        // queryString += "?";
+        // queryString += ") ";
 
         console.log(queryString);
 
