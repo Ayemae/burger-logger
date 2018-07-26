@@ -5,7 +5,7 @@ var PORT = process.env.PORT || 4040;
 
 var app = express();
 
-app.use(express.statis("public"));
+app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: true}));
 
@@ -18,7 +18,7 @@ app.set("view engine", "handlebars");
 
 var routes = require("./controllers/burgersCtrl.js")
 
-app.use(routes);
+app.use(routes); // ????????????/
 
 app.listen(PORT, function() {
     console.log("Server is listening on http://localhost"+ PORT);

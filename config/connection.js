@@ -2,10 +2,10 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
     host: "localhost",
-    port: "3333", //MAMP
+    port: "8888", //MAMP
     user: "root",
     password: "root",
-    database: "burger_logger_db"
+    database: "burgers_db"
 });
 
 module.exports = connection;
