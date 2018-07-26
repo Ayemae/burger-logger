@@ -18,8 +18,8 @@ app.set("view engine", "handlebars");
 
 var routes = require("./controllers/burgersCtrl.js")
 
-app.use(routes); // ????????????/
+app.use(routes);
 
 app.listen(PORT, function() {
-    console.log("Server is listening on http://localhost"+ PORT);
+    console.log("Server is listening on http://localhost:"+ PORT);
 });
