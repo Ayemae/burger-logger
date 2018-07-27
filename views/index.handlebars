@@ -1,23 +1,15 @@
 <h1>Burger Logger</h1>
 
-<h2>Eaten burgers</h2>
+<h2>Eaten Burgers</h2>
 
 <ul>
-  {{#each burgers}}
-    {{#if eaten}}
-      {{burgers eaten=true}}
-    {{/if}}
-  {{/each}}
+  {{#each burgers}} {{#if eaten}} {{> burger-block eaten=true}} {{/if}} {{/each}}
 </ul>
 
 <h2>Not-Eaten Burgers</h2>
 
 <ul>
-  {{#each burgers}}
-    {{#unless eaten}}
-      {{burgers eaten=false}}
-    {{/unless}}
-  {{/each}}
+  {{#each burgers}} {{#unless eaten}} {{> burger-block eaten=false}} {{/unless}} {{/each}}
 </ul>
 
 <h2>Add a Burger</h2>
@@ -32,18 +24,45 @@
 </form>
 
 <script>
-  $("#submit-btn").on("click", function() {
+  $(function () {
+    $(".eat-burger").on("click", function (event) {
+      var id = $(this).data("id");
+      // var isEaten = $(this).data("iseaten");
+      var changeEaten = {
+        eaten: true
+      };
+
+      // Send the PUT request.
+      $.ajax("/api/burgers/" + id, {
+        type: "PUT",
+        data: changeEaten
+      }).then(
+        function () {
+          console.log("Has this burger been eaten? "+ isEaten);
+          location.reload();
+        });
+    });
+  });
+
+
+
+  $("#submit-btn").on("click", function (event) {
     event.preventDefault();
     newBurger = {
       name: $("#new-burger").val().trim()
     };
-  console.log(newBurger);
+    console.log(newBurger);
 
     $.ajax("/api/burgers", {
       type: "POST",
       data: newBurger
-      }).then( function(data) {
+    }).then(function (data) {
       console.log(data);
     })
-  })
+  });
+
+
+
+
+
 </script>
