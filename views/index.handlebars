@@ -26,26 +26,47 @@
 <script>
   $(function () {
     $(".eat-burger").on("click", function (event) {
+<<<<<<< HEAD
       var id = $(this).data("id");
       // var isEaten = $(this).data("iseaten");
       var changeEaten = {
         eaten: true
       };
 
+=======
+      event.preventDefault();
+      var id = $(this).data("id");
+      var curStatus = $(this).data("status");
+
+      if (curStatus === 0) {
+        curStatus = true;
+      }
+      var changeEaten = {
+        eaten: true
+      };
+      console.log(changeEaten)
+>>>>>>> 6ffabc51aff3f4472590e27226d4337f1c4a8880
       // Send the PUT request.
       $.ajax("/api/burgers/" + id, {
         type: "PUT",
         data: changeEaten
       }).then(
         function () {
+<<<<<<< HEAD
           console.log("Has this burger been eaten? "+ isEaten);
+=======
+          console.log("Has this burger been eaten? " + isEaten);
+>>>>>>> 6ffabc51aff3f4472590e27226d4337f1c4a8880
           location.reload();
         });
     });
   });
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 6ffabc51aff3f4472590e27226d4337f1c4a8880
   $("#submit-btn").on("click", function (event) {
     event.preventDefault();
     newBurger = {
@@ -58,6 +79,7 @@
       data: newBurger
     }).then(function (data) {
       console.log(data);
+      location.reload();
     })
   });
 
