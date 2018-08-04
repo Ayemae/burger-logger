@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Roboto:400,700');
+
+body {
+    font-family: "Roboto", arial, sans-serif;
+    font-size: 20px;
+    background-color: rgb(255, 237, 137);
+    text-align: center;
+    margin: auto;
+    max-width: 980px;
+}
+
+header h1 {
+    margin: 3px;
+    padding: 3px;
+}
+
+h1, h2 {
+    font-family: "Do Hyeon";
+    font-weight: normal;
+}
+
+h2 {
+    margin: 5px;
+    padding: 5px;
+}
+
+button {
+    color: #fff;
+    border: none;
+    font-size: .8em;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 2px 5px;
+    letter-spacing: 1px;
+    background-color: #a40000;
+}
+
+input {
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    padding: 2px 5px;
+    letter-spacing: 1px;
+}
+
+
+.container {
+    display: flex;
+    margin: auto;
+    text-align: center;
+    width: auto;
+    justify-content: center;
+}
+
+.eaten,
+.not-eaten {
+    text-align: left;
+    padding: 20px;
+    text-align: left;
+    padding: 5px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+.eaten {
+    background-color: #ffcf93;
+}
+.not-eaten {
+    background-color: #eeffcb;
+}
+
+.eaten ul, .eaten li,
+.not-eaten ul, .not-eaten li {
+    list-style: none;
+    padding: 0;
+
+}

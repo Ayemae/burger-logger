@@ -1,16 +1,25 @@
-<h1>Burger Logger</h1>
+<header>
+  <h1>Burger Logger!</h1>
+</header>
 
-<h2>Eaten Burgers</h2>
+<div class="container">
 
-<ul>
-  {{#each burgers}} {{#if eaten}} {{> burger-block eaten=true}} {{/if}} {{/each}}
-</ul>
+  <div class="not-eaten">
+    <h2>Not-Eaten Burgers</h2>
+    <ul>
+      {{#each burgers}} {{#unless eaten}} {{> burger-block eaten=false}} {{/unless}} {{/each}}
+    </ul>
+  </div>
 
-<h2>Not-Eaten Burgers</h2>
+  <div class="eaten">
+    <h2>Eaten Burgers</h2>
+    <ul>
+      {{#each burgers}} {{#if eaten}} {{> burger-block eaten=true}} {{/if}} {{/each}}
+    </ul>
+  </div>
 
-<ul>
-  {{#each burgers}} {{#unless eaten}} {{> burger-block eaten=false}} {{/unless}} {{/each}}
-</ul>
+</div>
+<!-- END CONTAINER -->
 
 <h2>Add a Burger</h2>
 <form class="create-form">
@@ -26,14 +35,6 @@
 <script>
   $(function () {
     $(".eat-burger").on("click", function (event) {
-<<<<<<< HEAD
-      var id = $(this).data("id");
-      // var isEaten = $(this).data("iseaten");
-      var changeEaten = {
-        eaten: true
-      };
-
-=======
       event.preventDefault();
       var id = $(this).data("id");
       var curStatus = $(this).data("status");
@@ -44,29 +45,18 @@
       var changeEaten = {
         eaten: true
       };
-      console.log(changeEaten)
->>>>>>> 6ffabc51aff3f4472590e27226d4337f1c4a8880
       // Send the PUT request.
       $.ajax("/api/burgers/" + id, {
         type: "PUT",
         data: changeEaten
       }).then(
-        function () {
-<<<<<<< HEAD
-          console.log("Has this burger been eaten? "+ isEaten);
-=======
+        function (data) {
           console.log("Has this burger been eaten? " + isEaten);
->>>>>>> 6ffabc51aff3f4472590e27226d4337f1c4a8880
           location.reload();
         });
     });
   });
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 6ffabc51aff3f4472590e27226d4337f1c4a8880
   $("#submit-btn").on("click", function (event) {
     event.preventDefault();
     newBurger = {
